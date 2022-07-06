@@ -1,9 +1,12 @@
-import logo from "./logo.svg";
+
 import "./App.css";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
+import PhotoPage from "./pages/PhotoPage/PhotoPage";
+import PhotosPage from "./pages/PhotosPage/PhotosPage";
+
 
 function App() {
   return (
@@ -12,6 +15,8 @@ function App() {
         <Routes>
           <Route path={"/"} element={<LoginPage />}></Route>
           <Route path={"/profile"} element={<ProfilePage />}></Route>
+          <Route path={'/photos'} element={<PhotosPage />} />
+          <Route path={'/photo/:id'} element={<PhotoPage />} />          
         </Routes>
       </BrowserRouter>
     </div>
