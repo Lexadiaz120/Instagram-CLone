@@ -1,3 +1,11 @@
 .user_settings {
-  box-shadow: 3px 3px 3px 3px solid black;
+  display: block;
+  margin-top: 50px;
+}
+
+.user_settings input {
+  -ms-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
 }
