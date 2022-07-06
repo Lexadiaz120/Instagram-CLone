@@ -4,6 +4,7 @@ import RegisterForm from "./components/RegisterForm/RegisterForm";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
+import { UserSettings } from "./components/UserSettings/UserSettings";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path={"/"} element={<LoginPage />}></Route>
           <Route path={"/profile"} element={<ProfilePage />}></Route>
+          <Route path={"/profile/settings"} element={<UserSettings />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
