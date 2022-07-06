@@ -18,5 +18,4 @@ const Avatar = ({ avatar, username }) => {
     </>
   );
 };
-
 export default Avatar;
