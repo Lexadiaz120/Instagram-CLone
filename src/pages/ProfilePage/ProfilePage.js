@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import Avatar from "../../components/Avatar/Avatar";
 import { UserSettings } from "../../components/UserSettings/UserSettings";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
+import "./ProfilePage.css";
 import useUser from "../../hooks/useUser";
 export const ProfilePage = () => {
   const { token } = useUserTokenContext();
@@ -19,13 +20,17 @@ export const ProfilePage = () => {
 
         {user && (
           <>
-            <section className="user_info">
-              <h2>My info</h2>
-              <Avatar avatar={user?.avatar} username={user[0]?.username} />
-              <p>Name: {user[0].username}</p>
-              <p>Email: {user[0].email}</p>
-            </section>
-            <UserSettings username={user[0]?.username} email={user[0].email} />
+            <div className="profile-container">
+              <section className="user_info">
+                <Avatar avatar={user?.avatar} username={user[0]?.username} />
+                <p>Name: {user[0].username}</p>
+                <p>Email: {user[0].email}</p>
+              </section>
+              <UserSettings
+                username={user[0]?.username}
+                email={user[0].email}
+              />
+            </div>
             <section className="gallery-list">
               <p>Fotos de usuario aquí</p>
             </section>

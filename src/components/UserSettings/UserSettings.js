@@ -50,6 +50,7 @@ export const UserSettings = () => {
             id="password"
             type="email"
           ></input>
+          <br />
           <button>Change</button>
         </form>
       </div>
