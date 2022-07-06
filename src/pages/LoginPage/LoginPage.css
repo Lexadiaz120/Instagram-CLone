@@ -1,0 +1,6 @@
+.login-page-container {
+  display: flex;
+  justify-content: center;
+  gap: 70px;
+  align-items: center;
+}
