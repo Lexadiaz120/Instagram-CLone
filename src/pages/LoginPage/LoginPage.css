@@ -4,3 +4,12 @@
   gap: 70px;
   align-items: center;
 }
+
+@media (max-width: 850px) {
+  .login-page-image img {
+    display: none;
+  }
+  .login-page-container {
+    gap: 0px;
+  }
+}
