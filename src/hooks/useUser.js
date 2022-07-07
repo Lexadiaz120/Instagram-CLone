@@ -6,5 +6,4 @@ const useUser = () => {
   
   return { user, loading, error };
 };
-
 export default useUser;

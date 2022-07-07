@@ -1,6 +1,5 @@
 import "./UserProfileGallery.css";
 export const UserProfileGallery = ({ userphotos }) => {
-  console.log(userphotos[0] == null);
   return (
     <>
       <div className="main">

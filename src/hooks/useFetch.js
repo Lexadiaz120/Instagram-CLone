@@ -2,11 +2,9 @@ import { useState, useEffect } from "react";
 import { useUserTokenContext } from "../contexts/UserTokenContext";
 const useFetch = (url) => {
   const [data, setData] = useState(null);
-  console.log("useFetch : " + data);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const { token } = useUserTokenContext(); 
-  let body; 
+  const { token } = useUserTokenContext();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,7 +14,6 @@ const useFetch = (url) => {
               headers: { Authorization: `Bearer ${token}` },
             }
           : {
-              body: JSON.stryngify({data}),
             };
 
         const res = await fetch(url, options);
