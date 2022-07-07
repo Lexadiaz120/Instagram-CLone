@@ -5,7 +5,7 @@ export const UserTokenContext = createContext();
 export const UserTokenContextProvider = ({ children }) => {
   const [token, setToken] = useLocalStorage("token", "");
   const [userId, UseUserId] = useLocalStorage("id", "");
-  console.log(userId);
+  console.log("userId from UserTokenContextProvider: " + userId);
 
   return (
     <UserTokenContext.Provider value={{ token, setToken, userId, UseUserId }}>

@@ -5,7 +5,6 @@ const useFetch = (url) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const { token } = useUserTokenContext();
-  console.log(token, "token from userfetch");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -14,11 +13,12 @@ const useFetch = (url) => {
           ? {
               headers: { Authorization: `Bearer ${token}` },
             }
-          : {};
+          : {
+            };
 
         const res = await fetch(url, options);
 
-        const body = await res.json();
+        const body = await res.json();        
 
         if (res.ok) {
           setData(body.data);
