@@ -49,3 +49,10 @@
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 850px) {
+  .login-form {
+    width: 200px;
+    text-align: center;
+  }
+}
