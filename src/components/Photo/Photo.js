@@ -1,5 +1,12 @@
+import Avatar from "../Avatar/Avatar";
+import useUser from "../../hooks/useUser";
+import Button from "../Button/Button";
 
 const Photo = ({ photo }) => {
+
+    const { user, loading, error } = useUser();
+    console.log("user?avatar" + user?.avatar);    
+    
 
     const{name_photo, username, description_photo} = photo;
 
@@ -7,7 +14,7 @@ const Photo = ({ photo }) => {
         <article>
             <header className="header"> 
                 <div className="perfilImage">
-                    <img src="https://source.unsplash.com/random/?people" alt="avatar"/>
+                    <Avatar avatar={user?.avatar} username={user?.username} />
                 </div>
                 <div className="photoDatas">                    
                     <p>{username}</p>
@@ -15,18 +22,17 @@ const Photo = ({ photo }) => {
                                             
             </header>
             <div className="bodyPhoto">
-                <img src={`http://localhost:5000/${name_photo}`} alt="Photo"/>
-                
+                <img src={`${process.env.REACT_APP_API_URL}/${name_photo}`} alt="Photo"/>
+            </div>
+            <div className="post-content">
                 <div className="iconsPhoto">
-                    <img src="https://png.pngtree.com/png-clipart/20210311/original/pngtree-love-heart-outline-png-image_6044200.jpg" alt="Like"/>
-                    <img src="https://www.pngfind.com/pngs/m/65-657175_png-file-svg-transparent-comment-icons-png-png.png" alt="Comment"/>
+                    <Button>{"🤍"}</Button>
+                    <Button>{"💬"}</Button>                   
                 </div>
-                
-                <div className="footerPhoto">
-                    <p>{username}</p>
-                    <p>{description_photo}</p>   
-                </div>                              
-            </div>                                                          
+                <p className="likes">1000 likes</p>
+                <p className="description"><span>{username}</span>{description_photo}</p> 
+            </div> 
+                                                                       
         </article>
     );    
 };

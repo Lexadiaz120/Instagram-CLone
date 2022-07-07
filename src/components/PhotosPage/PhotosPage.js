@@ -12,8 +12,7 @@ const PhotosPage = () => {
 
                 const body = await res.json();
 
-                if(res.ok){
-                    console.log(body.data)
+                if(res.ok){                    
                     setPhotos(body.data)
                 } else {
                     throw new Error(body.message);
