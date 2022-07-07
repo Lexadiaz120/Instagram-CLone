@@ -8,6 +8,7 @@ import PhotoPage from "./pages/PhotoPage/PhotoPage";
 import PhotosPage from "./pages/PhotosPage/PhotosPage";
 
 
+
 function App() {
   return (
     <div className="App">
@@ -17,6 +18,7 @@ function App() {
           <Route path={"/profile"} element={<ProfilePage />}></Route>
           <Route path={'/photos'} element={<PhotosPage />} />
           <Route path={'/photo/:id'} element={<PhotoPage />} />          
+          <Route path={"/profile/settings"} element={<UserSettings />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

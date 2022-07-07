@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
+import "./UserSettings.css";
 export const UserSettings = () => {
   const [username, setUserName] = useState("");
   console.log(username);
@@ -32,19 +33,18 @@ export const UserSettings = () => {
     <>
       <div className="user_settings">
         <form onSubmit={changeUserProfile}>
-          <label for="username">Change username</label>
           <input
             onChange={(e) => setUserName(e.target.value)}
             value={username}
             id="username"
+            placeholder="Introduce new name"
             type="name"
           ></input>
           <br />
-          <label for="password">Change password</label>
           <input id="password" type="password"></input>
           <br />
-          <label for="email">Change email </label>
           <input
+            placeholder="Introduce new password"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             id="password"
