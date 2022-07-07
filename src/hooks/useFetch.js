@@ -5,6 +5,7 @@ const useFetch = (url) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const { token } = useUserTokenContext();
+  console.log(token, "token from userfetch");
 
   useEffect(() => {
     const fetchData = async () => {
