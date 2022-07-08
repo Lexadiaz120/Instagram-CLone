@@ -11,6 +11,7 @@ const Photo = ({ photo }) => {
   console.log(photo, "soy photo");
   const { user, loading, error } = useUser();
   const [modal, setModal] = useState(false);
+  console.log(modal);
   const [commentInput, setCommentInput] = useState(false);
   console.log(commentInput);
   const { name_photo, id, username, description_photo } = photo;
@@ -33,7 +34,12 @@ const Photo = ({ photo }) => {
       </div>
       {modal ? (
         <div>
-          <DetailsModal id={id} photo={name_photo} />
+          <DetailsModal
+            setModal={setModal}
+            modal={modal}
+            id={id}
+            photo={name_photo}
+          />
         </div>
       ) : null}
       <div className="post-content">

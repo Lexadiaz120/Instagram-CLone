@@ -1,39 +1,37 @@
-.leftModal{
+.leftModal {
   width: 50%;
   float: left;
 }
 
-.rightModal{
+.rightModal {
   width: 50%;
-  float: right;
+  height: 100%;
+  overflow: hidden;
   display: inherit;
-  flex-direction: column;  
+  flex-direction: column;
 }
 
-.modalComments{
+.modalComments {
   position: relative;
   width: 100%;
   flex-direction: column;
   height: 50px;
 }
 
-.modalComments img{
-  width:100px;
+.modalComments img {
+  width: 100px;
   height: 100px;
 }
 
-
-.modalCommentForm{
-  width:fit-content; 
+.modalCommentForm {
+  width: fit-content;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;  
+  justify-content: space-around;
   width: 100%;
   padding: 5px;
   margin-top: auto;
-    
 }
-
 
 .details_modal {
   position: absolute;
@@ -52,11 +50,15 @@
   width: 100%;
   border-right: 2px solid black;
   /* top: 50%; */
-  height: 100vh; 
-  object-fit: cover; 
+  height: 100vh;
+  object-fit: cover;
 }
 
 .details_modal img {
   width: 100%;
   height: 100%;
+}
+
+.details_modal span {
+  font-size: 40px;
 }
