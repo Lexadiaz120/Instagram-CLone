@@ -1,0 +1,24 @@
+.details_modal {
+  position: absolute;
+  width: 100%;
+  margin-left: auto;
+  display: flex;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background-color: whitesmoke;
+  opacity: 1;
+  top: 15%;
+}
+.details_modal_photo {
+  width: 50%;
+  border-right: 2px solid black;
+  top: 50%;
+  height: 100%;
+  line-height: 100%;
+}
+.details_modal img {
+  width: 100%;
+  height: 100%;
+}
