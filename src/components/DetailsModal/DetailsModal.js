@@ -3,6 +3,8 @@ import { CommentForm } from "../CommentForm/CommentForm";
 import { useState, useEffect } from "react";
 import "./DetailsModal.css";
 import { UsersComments } from "../UsersComments/UsersComments";
+import {LikeButton} from "../LikeButton/LikeButton";
+
 export const DetailsModal = ({ photo, id }) => {
   const [comments, setComments] = useState([]);
   useEffect(() => {
@@ -24,11 +26,21 @@ export const DetailsModal = ({ photo, id }) => {
   return (
     <>
       <div className="details_modal">
-        <div className="details_modal_photo">
-          <img src={`${process.env.REACT_APP_API_URL}/${photo}`} />
+        <div className="leftModal">
+          <div className="details_modal_photo">
+            <img src={`${process.env.REACT_APP_API_URL}/${photo}`} />
+          </div>
         </div>
-        <UsersComments comments={comments} />
-        <CommentForm id={id} />
+        <div className="rightModal">
+          <div className="modalComments">
+            <UsersComments comments={comments} />
+          </div>
+          <div className="modalCommentForm">
+            <LikeButton />
+            <CommentForm id={id} />
+          </div> 
+        </div>       
+        
       </div>
     </>
   );
