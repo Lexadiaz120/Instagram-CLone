@@ -1,4 +1,5 @@
 import List from "../List/List.js";
+import "./PhotoList.css";
 import Photo from "../Photo/Photo";
 import { Link } from "react-router-dom";
 
