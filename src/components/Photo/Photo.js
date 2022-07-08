@@ -1,5 +1,6 @@
 import Avatar from "../Avatar/Avatar";
 import useUser from "../../hooks/useUser";
+import "./Photo.css";
 import Button from "../Button/Button";
 import { useState } from "react";
 import { DetailsModal } from "../DetailsModal/DetailsModal";
@@ -37,7 +38,7 @@ const Photo = ({ photo }) => {
       ) : null}
       <div className="post-content">
         <div className="iconsPhoto">
-          <LikeButton></LikeButton>
+          <LikeButton id={id}></LikeButton>
           <CommentButton
             commentInput={commentInput}
             setCommentInput={setCommentInput}
