@@ -3,9 +3,9 @@ import { CommentForm } from "../CommentForm/CommentForm";
 import { useState, useEffect } from "react";
 import "./DetailsModal.css";
 import { UsersComments } from "../UsersComments/UsersComments";
-import {LikeButton} from "../LikeButton/LikeButton";
+import { LikeButton } from "../LikeButton/LikeButton";
 
-export const DetailsModal = ({ photo, id }) => {
+export const DetailsModal = ({ photo, id, setModal, modal }) => {
   const [comments, setComments] = useState([]);
   useEffect(() => {
     const fetchComments = async () => {
@@ -36,11 +36,11 @@ export const DetailsModal = ({ photo, id }) => {
             <UsersComments comments={comments} />
           </div>
           <div className="modalCommentForm">
-            <LikeButton />
+            <LikeButton id={id} />
             <CommentForm id={id} />
-          </div> 
-        </div>       
-        
+          </div>
+        </div>
+        <span onClick={() => setModal(!modal)}>&times;</span>
       </div>
     </>
   );

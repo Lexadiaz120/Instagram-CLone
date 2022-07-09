@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import Button from "../Button/Button";
+import "./CommentButton.css";
 export const CommentButton = ({ setCommentInput, commentInput, id }) => {
   const [comments, setComments] = useState("");
   const { token } = useUserTokenContext();
   const openComment = () => {
-    setCommentInput(true);
+    setCommentInput(!commentInput);
   };
   const createComment = async (e) => {
     e.preventDefault();
@@ -25,17 +26,18 @@ export const CommentButton = ({ setCommentInput, commentInput, id }) => {
   return (
     <>
       <Button onClick={openComment}>{"💬"}</Button>
+      <br />
       {commentInput ? (
-        <form onSubmit={createComment}>
-          <label htmlFor="comment">Description:</label>
+        <form className="comment-button-form" onSubmit={createComment}>
           <input
             id="comment"
+            placeholder="Add your comment here"
             value={comments}
             onChange={(e) => {
               setComments(e.target.value);
             }}
           />
-          <button>Create comment</button>
+          <button>Send</button>
         </form>
       ) : null}
     </>
