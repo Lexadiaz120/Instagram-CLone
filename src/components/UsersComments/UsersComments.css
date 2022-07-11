@@ -1,11 +1,4 @@
-.users_comments {
-  gap: 20px;
-  display: flex;
-  align-items: center;
-  padding-left: 20px;  
-  padding-top: 10px;
-  overflow-x: none;
-}
+
 .users_comments_name p {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
