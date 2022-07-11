@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import useUser from "../../hooks/useUser";
 import { CreatePostForm } from "../CreatePostForm/CreatePostForm";
@@ -9,7 +10,8 @@ const Header = () => {
   const [addPost, setAddPost] = useState(false);
   const { user, loading } = useUser();
   const [openForm, setOpenForm] = useState(false);
-  const { token } = useUserTokenContext();
+  const { token, setToken } = useUserTokenContext();
+  const navigate = useNavigate();
 
   const openPost = () => {
     setAddPost(true);
@@ -44,9 +46,18 @@ const Header = () => {
             </>
           ) : null}
         </nav>
+        <nav>
+          <p>
+            <Link to={"/photos"}>Feed</Link>
+          </p>
+        </nav>
         <SearchPhotos></SearchPhotos>
-        <HeaderAvatar />
-        <p>Hello, {user?.[0]?.username}</p>
+        {token ? (
+          <>
+            <HeaderAvatar />
+            <p>Hello, {user?.[0]?.username}</p>
+          </>
+        ) : null}
       </header>
       <div className="modal-post">
         <CreatePostForm openForm={openForm} setOpenForm={setOpenForm} />

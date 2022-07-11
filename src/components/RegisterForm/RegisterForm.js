@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import "react-toastify/dist/ReactToastify.css";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./RegisterForm.css";
 import Button from "../Button/Button";
 
@@ -11,6 +11,7 @@ const RegisterForm = () => {
   const [username, setUserName] = useState("");
   const [passwd, setPasswd] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
   const RegisterUser = async (e) => {
     try {
       e.preventDefault();
@@ -30,13 +31,16 @@ const RegisterForm = () => {
         toast(body?.message);
         throw new Error(body?.message);
       }
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
       setError("");
       setUserName("");
       setEmail("");
       setPasswd("");
-      toast.success("User registered succesfully");
+      toast("User registered succesfully");
     } catch (error) {
-      setError(error.message);
+      toast(error.message);
     }
   };
 
@@ -75,14 +79,14 @@ const RegisterForm = () => {
             }}
           />
           <br />
-          <Button className="blue_button">Registrarse</Button>
+          <Button className="blue_button">Register</Button>
         </form>
       </div>
       <ToastContainer />
       <div className="not-registered">
         <div className="not-registered-links">
           <p>Tienes una cuenta?</p>
-          <Link className="signup_link" to={"/signup"}>
+          <Link className="signup_link" to={"/"}>
             Entra
           </Link>
         </div>
