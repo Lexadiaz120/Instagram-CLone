@@ -18,7 +18,7 @@ export const CreatePostForm = ({ openForm, setOpenForm }) => {
         formData.append("foto", image);
       }
       formData.append("description_photo", description_photo);
-      const postEntryRes = await fetch("http://localhost:5000/posts", {
+      const postEntryRes = await fetch(`${process.env.REACT_APP_API_URL}/posts`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

@@ -8,7 +8,9 @@ const PhotoPage = () => {
   useEffect(() => {
     const fetchPhoto = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/photo/${id}`);
+        const res = await fetch(
+          `${process.env.REACT_APP_API_URL}}/photo/${id}`
+        );
 
         const body = await res.json();
 

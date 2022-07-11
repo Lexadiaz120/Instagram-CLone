@@ -14,7 +14,7 @@ export const LikeButton = ({ id }) => {
       e.preventDefault();
       setChecked((value) => !value);
       const postCommentRes = await fetch(
-        `http://localhost:5000/likephoto/${id}`,
+        `${process.env.REACT_APP_API_URL}/likephoto/${id}`,
         {
           method: "POST",
           headers: {

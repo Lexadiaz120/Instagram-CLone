@@ -15,7 +15,7 @@ export const CommentButton = ({ setCommentInput, commentInput, id }) => {
     try {
       e.preventDefault();
       const postCommentRes = await fetch(
-        `http://localhost:5000/comments/${id}`,
+        `${process.env.REACT_APP_API_URL}/comments/${id}`,
         {
           method: "POST",
           headers: {
