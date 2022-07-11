@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import useUser from "../../hooks/useUser";
@@ -10,15 +10,14 @@ const Header = () => {
   const [addPost, setAddPost] = useState(false);
   const { user, loading } = useUser();
   const [openForm, setOpenForm] = useState(false);
-  let navigate = useNavigate();
   const { token, setToken } = useUserTokenContext();
+  const navigate = useNavigate();
   const openPost = () => {
     setAddPost(true);
   };
   const closePost = () => {
     setAddPost(false);
   };
-
   return (
     <>
       <header className="header">
@@ -45,12 +44,11 @@ const Header = () => {
             </>
           ) : null}
           <nav>
-          <p>
-            <Link to={"/photos"}>Feed</Link>
-          </p>
+            <p>
+              <Link to={"/photos"}>Feed</Link>
+            </p>
+          </nav>
         </nav>
-        </nav>
-        
         <SearchPhotos></SearchPhotos>
         <div className="avatarHeader">
           {token ? (
@@ -61,10 +59,8 @@ const Header = () => {
           ) : null}
           {token ? (
             <>
-              <nav onClick={() => navigate("/login")>
-                <p onClick={() => {
-                  setToken("");
-                }}>Sign out</p>
+              <nav onClick={() => navigate("/login")}>
+                <p onClick={() => setToken("")}>Sign out</p>
               </nav>
             </>
           ) : null}
@@ -76,5 +72,4 @@ const Header = () => {
     </>
   );
 };
-
 export default Header;
