@@ -1,5 +1,5 @@
 .main {
-  position: absolute;
+  position: absolute;  
   justify-content: center;
   align-items: center;
   margin-top: 10px;
@@ -8,9 +8,10 @@
   column-gap: 10px;
   grid-template-columns: repeat(auto-fill, minmax(300px, 300px));
   display: grid;
+  min-width: 350px;
 }
 
-.main img {
+.main img {  
   width: 300px;
   height: 300px;
   object-fit: cover;

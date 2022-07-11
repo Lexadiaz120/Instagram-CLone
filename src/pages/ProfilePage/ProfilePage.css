@@ -1,8 +1,14 @@
 .profile-container {
   display: flex;
-  gap: 30px;
+  flex-direction: row;  
   align-items: center;
   justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.profile-container a {
+  margin-left: 10px;  
 }
 
 .user_info {
@@ -21,5 +27,17 @@
   font-weight: 600;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
-  cursor: pointer;
+  cursor: pointer;  
+}
+
+@media (max-width: 500px){
+  .profile-container {
+    display: flex;
+    flex-direction: column;      
+  }
+
+  .profile-container button{
+    margin-top: 15px;
+    font-size: 22px;
+  }
 }

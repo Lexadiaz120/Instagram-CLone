@@ -44,32 +44,31 @@ const Header = () => {
               </div>
             </>
           ) : null}
-        </nav>
-        <nav>
+          <nav>
           <p>
             <Link to={"/photos"}>Feed</Link>
           </p>
         </nav>
+        </nav>
+        
         <SearchPhotos></SearchPhotos>
-        {token ? (
-          <>
-            <HeaderAvatar />
-            <p>Hello, {user?.[0]?.username}</p>
-          </>
-        ) : null}
-        {token ? (
-          <>
-            <nav onClick={() => navigate("/login")}>
-              <p
-                onClick={() => {
+        <div className="avatarHeader">
+          {token ? (
+            <>
+              <HeaderAvatar />
+              <p>Hello, {user?.[0]?.username}</p>
+            </>
+          ) : null}
+          {token ? (
+            <>
+              <nav onClick={() => navigate("/login")>
+                <p onClick={() => {
                   setToken("");
-                }}
-              >
-                Sign out
-              </p>
-            </nav>
-          </>
-        ) : null}
+                }}>Sign out</p>
+              </nav>
+            </>
+          ) : null}
+        </div>
       </header>
       <div className="modal-post">
         <CreatePostForm openForm={openForm} setOpenForm={setOpenForm} />
