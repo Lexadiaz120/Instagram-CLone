@@ -24,12 +24,15 @@ export const ProfilePage = () => {
           <>
             <div className="profile-container">
               <section className="user_info">
-                <Avatar avatar={user[0]?.avatar} username={user[0]?.username} />
-                <p>{user[0].username}</p>
-                <Link to={"/profile/settings"}>
-                  <button>Edit profile</button>
-                </Link>
-                <br />
+                <div className="avatarHeader">
+                  <Avatar avatar={user[0]?.avatar} username={user[0]?.username} />
+                  <p>{user[0].username}</p>
+                  <Link to={"/profile/settings"}>
+                    <button>Edit profile</button>
+                  </Link>
+                  <br />
+                </div>
+                
               </section>
             </div>
             <section className="gallery-list">

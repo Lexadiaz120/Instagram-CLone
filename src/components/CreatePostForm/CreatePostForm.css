@@ -1,9 +1,109 @@
 .createpost-form {
-  width: 50%;
-  display: block;
-  margin: 0 auto;
-  height: 200px;
-  position: absolute;
+  width: 750px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 0 auto;   
   z-index: 3000;
-  background-color: black;
+  color: black; 
+  border: 2px solid gray;
+  border-radius: 15px;
+  background-color: whitesmoke;
+  min-width: 350px;
+
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.7s;
+  
 }
+
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.createpost-form label {
+  font-size: 24px;
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+
+.createpost-form input {
+  height: 35px;
+  width: 65%;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.createpost-form button {
+  font-size: 18px;
+  width: 80px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 800px){
+
+  .createpost-form{
+    width: 95%;
+  }
+
+  .createpost-form label {
+    font-size: 20px;    
+  }
+
+  .createpost-form input {
+    height: 35px;
+    width: 85%;
+    border-radius: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .createpost-form button {
+    font-size: 18px;
+    width: 80px;
+    height: auto;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 400px){
+
+  .createpost-form {
+    height: 220px;
+  }
+
+  .createpost-form input {    
+    width: 95%;
+    font-size: 16px; 
+    margin-bottom: 20px;   
+  }
+  
+  .createpost-form button {
+    font-size: 18px;
+    width: 80px;
+    height: auto;
+    margin-bottom: 15px;
+  }
+}
+
