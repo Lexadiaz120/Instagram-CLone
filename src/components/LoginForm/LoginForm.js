@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
@@ -10,9 +10,8 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [passwd, setPasswd] = useState("");
   const { token } = useUserTokenContext();
+  let navigate = useNavigate();
   const { setToken, UseUserId } = useUserTokenContext();
-  const navigate = useNavigate();
-
   const loginUser = async (e) => {
     try {
       e.preventDefault();
@@ -27,16 +26,22 @@ const LoginForm = () => {
       if (!res.ok) {
         throw new Error(body.message);
       }
+      if (res.ok) {
+        navigate("/profile");
+      } else if (token) {
+        navigate("/photos");
+      }
+
       setToken(body.data.token);
       UseUserId(body.data.userId);
       setEmail("");
-      navigate("/profile");
       setPasswd("");
       toast.success("Logged succesfully");
     } catch (error) {
       toast(error.message);
     }
   };
+
   return (
     <>
       <div className="form-container">
