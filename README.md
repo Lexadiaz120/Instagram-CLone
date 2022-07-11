@@ -1,7 +1,6 @@
 # Instagram-Clone
 
-
-
+![alt text](https://s1.eestatic.com/2019/11/28/omicrono/internet-redes_sociales-tecnologia_447966574_139153579_1024x576.jpg)
 
 
 Getting Started with Create React App
