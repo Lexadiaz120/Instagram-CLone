@@ -22,6 +22,7 @@ export const CommentButton = ({ setCommentInput, commentInput, id }) => {
       const commentBody = await postCommentRes.json();
       throw new Error(commentBody.message);
     }
+    setComments("");
   };
   return (
     <>

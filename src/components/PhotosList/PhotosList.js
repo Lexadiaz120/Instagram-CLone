@@ -1,5 +1,4 @@
 import List from "../List/List.js";
-import "./PhotoList.css";
 import Photo from "../Photo/Photo";
 import { Link } from "react-router-dom";
 
@@ -8,7 +7,7 @@ const PhotosList = ({ photos }) => {
     <List
       data={photos}
       render={(photo) => (
-        <li key={photo.id}>
+        <li>
           <Photo photo={photo} />
         </li>
       )}

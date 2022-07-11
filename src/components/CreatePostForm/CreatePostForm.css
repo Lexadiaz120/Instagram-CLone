@@ -1,0 +1,9 @@
+.createpost-form {
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+  height: 200px;
+  position: absolute;
+  z-index: 3000;
+  background-color: black;
+}

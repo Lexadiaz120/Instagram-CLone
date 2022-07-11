@@ -1,9 +1,9 @@
-import { useParams } from "react-router-dom";
 import { CommentForm } from "../CommentForm/CommentForm";
 import { useState, useEffect } from "react";
 import "./DetailsModal.css";
 import { UsersComments } from "../UsersComments/UsersComments";
 import { LikeButton } from "../LikeButton/LikeButton";
+import { useParams } from "react-router-dom";
 
 export const DetailsModal = ({ photo, id, setModal, modal }) => {
   const [comments, setComments] = useState([]);
@@ -22,7 +22,7 @@ export const DetailsModal = ({ photo, id, setModal, modal }) => {
       }
     };
     fetchComments();
-  }, []);
+  }, [comments]);
   return (
     <>
       <div className="details_modal">

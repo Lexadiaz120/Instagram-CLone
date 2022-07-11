@@ -225,12 +225,12 @@ scrollbar-width: none;
 
   .modalComments{    
     width: 100%;
-    position:static;    
+    position😒tatic;    
   }
 
   .modalComments .users_comments{    
     width: 95%;
-    position:static;
+    position😒tatic;
     display: flex; 
     flex-direction: row;
     margin: 0;
@@ -260,4 +260,4 @@ scrollbar-width: none;
     cursor: pointer;
   }
 
-}
+} 
