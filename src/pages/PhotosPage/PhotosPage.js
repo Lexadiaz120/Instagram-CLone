@@ -3,6 +3,7 @@ import PhotosList from "../../components/PhotosList/PhotosList.js";
 
 const PhotosPage = () => {
   const [photos, setPhotos] = useState([]);
+  console.log(photos, "fotos");
 
   useEffect(() => {
     const fetchPhotos = async () => {

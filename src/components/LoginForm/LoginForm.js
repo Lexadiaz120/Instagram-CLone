@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
+import "react-toastify/dist/ReactToastify.css";
 import "./LoginForm.css";
 import Button from "../Button/Button";
 
@@ -10,12 +11,7 @@ const LoginForm = () => {
   const [passwd, setPasswd] = useState("");
   const { token } = useUserTokenContext();
   const { setToken, UseUserId } = useUserTokenContext();
-  const [error, setError] = useState("");
   const navigate = useNavigate();
-
-  if (token) {
-    navigate("/profile");
-  }
 
   const loginUser = async (e) => {
     try {
@@ -34,7 +30,7 @@ const LoginForm = () => {
       setToken(body.data.token);
       UseUserId(body.data.userId);
       setEmail("");
-      setError("");
+      navigate("/profile");
       setPasswd("");
       toast.success("Logged succesfully");
     } catch (error) {
@@ -67,6 +63,11 @@ const LoginForm = () => {
           />
           <Button className="blue_button">Log in</Button>
         </form>
+        <div className="not-registered">
+          <p>
+            Not register? Register <Link to={"/register"}>here</Link>
+          </p>
+        </div>
         <ToastContainer />
       </div>
     </>
