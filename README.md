@@ -1,7 +1,19 @@
 # Instagram-Clone
 
 ![alt text](https://s1.eestatic.com/2019/11/28/omicrono/internet-redes_sociales-tecnologia_447966574_139153579_1024x576.jpg)
+Instragram Clone Front End part maked for @Hackaboss bootcamp  
+You can see Backend Part here https://github.com/Lexadiaz120/Instagram-Backend
 
+Front End Endpoints 
+| Method | Path |  
+|--------|------|
+Path: / Component <PhotosPage>. Feed , in this page you can see last fotos published by other users    
+Path: /login  Component <LoginPage> In this page you can login your user
+Path: /register  Component <RegisterForm/>  In this page you can register
+Path|  /profile  Component ProfilePage. You need to be logged to use this page
+Path /photo/:id/  Component <PhotoPage>  Details photo  
+Path "/gallery/:id" Component <UserGallery> User´s gallery
+Path "/profile/settings" Component <UserSettings/> User Settings
 
 Getting Started with Create React App
 This project was bootstrapped with Create React App.
