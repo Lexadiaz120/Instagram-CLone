@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import useUser from "../../hooks/useUser";
@@ -10,13 +10,8 @@ const Header = () => {
   const [addPost, setAddPost] = useState(false);
   const { user, loading } = useUser();
   const [openForm, setOpenForm] = useState(false);
+  let navigate = useNavigate();
   const { token, setToken } = useUserTokenContext();
-  const navigate = useNavigate();
-
-  if (!token) {
-    navigate("/login");
-  }
-
   const openPost = () => {
     setAddPost(true);
   };
@@ -64,8 +59,14 @@ const Header = () => {
         ) : null}
         {token ? (
           <>
-            <nav>
-              <p onClick={() => setToken("")}>Sign out</p>
+            <nav onClick={() => navigate("/login")}>
+              <p
+                onClick={() => {
+                  setToken("");
+                }}
+              >
+                Sign out
+              </p>
             </nav>
           </>
         ) : null}

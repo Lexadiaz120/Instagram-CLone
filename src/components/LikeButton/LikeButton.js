@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import Button from "../Button/Button";
 export const LikeButton = ({ id }) => {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState();
   const { token } = useUserTokenContext();
   let navigate = useNavigate();
   console.log(token, "TOKEN");
