@@ -13,6 +13,10 @@ const Header = () => {
   const { token, setToken } = useUserTokenContext();
   const navigate = useNavigate();
 
+  if (!token) {
+    navigate("/login");
+  }
+
   const openPost = () => {
     setAddPost(true);
   };
@@ -56,6 +60,13 @@ const Header = () => {
           <>
             <HeaderAvatar />
             <p>Hello, {user?.[0]?.username}</p>
+          </>
+        ) : null}
+        {token ? (
+          <>
+            <nav>
+              <p onClick={() => setToken("")}>Sign out</p>
+            </nav>
           </>
         ) : null}
       </header>

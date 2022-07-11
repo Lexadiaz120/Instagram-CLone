@@ -11,7 +11,6 @@ const LoginForm = () => {
   const [passwd, setPasswd] = useState("");
   const { token } = useUserTokenContext();
   const { setToken, UseUserId } = useUserTokenContext();
-  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const loginUser = async (e) => {
@@ -31,10 +30,7 @@ const LoginForm = () => {
       setToken(body.data.token);
       UseUserId(body.data.userId);
       setEmail("");
-      setError("");
-      setTimeout(() => {
-        navigate("/profile");
-      }, 2000);
+      navigate("/profile");
       setPasswd("");
       toast.success("Logged succesfully");
     } catch (error) {
