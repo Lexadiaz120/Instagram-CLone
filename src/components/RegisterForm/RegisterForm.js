@@ -36,7 +36,6 @@ const RegisterForm = () => {
       setPasswd("");
       toast.success("User registered succesfully");
     } catch (error) {
-      console.log(error.message, "soy error de mensaje");
       setError(error.message);
     }
   };

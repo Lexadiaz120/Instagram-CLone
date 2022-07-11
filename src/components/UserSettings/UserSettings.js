@@ -1,31 +1,42 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import "./UserSettings.css";
 export const UserSettings = () => {
   const [username, setUserName] = useState("");
-  console.log(username);
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const filesRef = useRef();
   const { token } = useUserTokenContext();
-  console.log(token);
-
   const changeUserProfile = async (e) => {
     try {
       e.preventDefault();
+      const formData = new FormData();
+      console.log(formData);
+      for (const image of filesRef.current.files) {
+        console.log(image);
+        formData.append("avatar", image);
+      }
+      formData.append("username", username);
+      formData.append("email", email);
+      formData.append("passwd", password);
       const changeUserRes = await fetch("http://localhost:5000/editprofile", {
         method: "PATCH",
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ username, email }),
+        body: formData,
       });
       const postUserBody = await changeUserRes.json();
+      console.log(postUserBody);
       if (!postUserBody.ok) {
         throw new Error(postUserBody.message);
       }
-      console.log(postUserBody);
+      if (postUserBody.ok) {
+        toast("Data succesfully changed");
+      }
     } catch (error) {
-      console.log(error.message);
+      toast(error.message);
     }
   };
 
@@ -41,19 +52,30 @@ export const UserSettings = () => {
             type="name"
           ></input>
           <br />
-          <input id="password" type="password"></input>
-          <br />
           <input
-            placeholder="Introduce new password"
+            placeholder="Introduce new email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
-            id="password"
+            id="email"
             type="email"
           ></input>
           <br />
-          <button>Change</button>
+          <input
+            placeholder="Introduce new password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            id="password"
+            type="password"
+          ></input>
+          <br />
+          <label for="images">Cambiar photo</label>
+          <br />
+          <input type="file" id="images" ref={filesRef} required />
+          <br />
+          <button>Change data</button>
         </form>
       </div>
+      <ToastContainer />
     </>
   );
 };

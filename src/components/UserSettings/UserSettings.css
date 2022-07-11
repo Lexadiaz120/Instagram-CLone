@@ -1,6 +1,11 @@
 .user_settings {
   display: block;
   margin-top: 50px;
+  width: 520px;
+  display: block;
+  margin: 0 auto;
+  background-color: white;
+  box-shadow: 3px 3px 3px 3px black;
 }
 
 .user_settings input {

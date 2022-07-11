@@ -6,20 +6,20 @@ import { useState } from "react";
 import { DetailsModal } from "../DetailsModal/DetailsModal";
 import { CommentButton } from "../CommentButton/CommentButton";
 import { LikeButton } from "../LikeButton/LikeButton";
-
+import { Link } from "react-router-dom";
+import { LikesCount } from "../LikesCount/LikesCount";
 const Photo = ({ photo }) => {
-  console.log(photo, "soy photo");
   const { user, loading, error } = useUser();
   const [modal, setModal] = useState(false);
-  console.log(modal);
   const [commentInput, setCommentInput] = useState(false);
-  console.log(commentInput);
   const { name_photo, id, username, description_photo } = photo;
   return (
     <article>
-      <header className="header">
+      <header className="header-photo">
         <div className="perfilImage">
-          <Avatar avatar={user?.avatar} username={user?.username} />
+          <Link to={`/gallery/${id}`}>
+            <Avatar avatar={user?.avatar} username={user?.username} />
+          </Link>
         </div>
         <div className="photoDatas">
           <p>{username}</p>
@@ -51,7 +51,9 @@ const Photo = ({ photo }) => {
             id={id}
           ></CommentButton>
         </div>
-        <p className="likes">1000 likes</p>
+        <p className="likes">
+          <LikesCount id={id}></LikesCount>
+        </p>
         <p className="description">
           <span>{username}</span>
           {description_photo}

@@ -1,0 +1,92 @@
+import { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import SearchIcon from "@mui/icons-material/Search";
+import "./SearchPhotos.css";
+const SearchPhotos = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [photo, setPhotos] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [description_photo, setDescription] = useState(
+    searchParams.get("description_photo") || ""
+  );
+  useEffect(() => {
+    const fetchPhotos = async () => {
+      const res = await fetch(
+        `http://localhost:5000/photos?${searchParams.toString()}`
+      );
+      const body = await res.json();
+
+      if (res.ok) {
+        setPhotos(body.data);
+      }
+    };
+    fetchPhotos();
+  }, [searchParams]);
+
+  const filteredPhotos = photo.filter((photo) => {
+    return photo?.description_photo
+      .toLowerCase()
+      .includes(description_photo.toLowerCase());
+  });
+
+  return (
+    <>
+      <div className="search">
+        <div className="searchInput">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              let query = {};
+              if (description_photo) {
+                query.description_photo = description_photo;
+              }
+              setSearchParams(new URLSearchParams(query));
+            }}
+          >
+            <input
+              value={description_photo}
+              onMouseLeave={() => {
+                setModal(false);
+              }}
+              onClick={() => {
+                setModal(!modal);
+              }}
+              onChange={(e) => {
+                setDescription(e.target.value);
+              }}
+              type="text"
+              placeholder="Search photos"
+            ></input>
+            <SearchIcon />
+          </form>
+        </div>
+        {modal ? (
+          <>
+            <div onMouseEnter={() => setModal(true)} className="search-results">
+              {filteredPhotos.length > 0 && (
+                <>
+                  {filteredPhotos?.map((photo, key) => (
+                    <>
+                      <div className="search-results-container">
+                        <Link to={`/photo/${photo?.id}`}>
+                          <img
+                            key={photo?.id}
+                            src={`http://localhost:5000/${photo?.name_photo}`}
+                            className="search-results-item"
+                          ></img>
+                        </Link>
+                        <p>{photo?.description_photo}</p>
+                      </div>
+                    </>
+                  ))}
+                </>
+              )}
+            </div>
+          </>
+        ) : null}
+      </div>
+    </>
+  );
+};
+
+export default SearchPhotos;

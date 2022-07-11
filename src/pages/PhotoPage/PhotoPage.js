@@ -1,38 +1,34 @@
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Photo from "../../components/Photo/Photo.js"
+import Photo from "../../components/Photo/Photo.js";
 
 const PhotoPage = () => {
+  const { id } = useParams();
+  const [photo, setPhoto] = useState({});
+  useEffect(() => {
+    const fetchPhoto = async () => {
+      try {
+        const res = await fetch(`http://localhost:5000/photo/${id}`);
 
-    const { id } = useParams();
-    const [photo, setPhoto] = useState({});
+        const body = await res.json();
 
-    useEffect(() => {
-        const fetchPhoto = async () => {
-            try {
-                
-                const res = await fetch(`http://localhost:5000/photos/${id}`);
+        if (res.ok) {
+          setPhoto(body.data);
+        } else {
+          throw new Error(body.message);
+        }
+      } catch (error) {
+        alert(error.message);
+      }
+    };
+    fetchPhoto();
+  }, [id]);
 
-                const body = await res.json();
-
-                if(res.ok){
-                    setPhoto(body.data)
-                } else {
-                    throw new Error(body.message);
-                }
-
-            } catch (error) {
-                alert(error.message)
-            }
-        };
-        fetchPhoto();
-    }, [id]);
-
-    return (
-        <section>
-            { Object.keys(photo).length > 0 && <Photo photo={photo} /> }                                            
-        </section>
-    );
+  return (
+    <section>
+      {Object.keys(photo).length > 0 && <Photo photo={photo} />}
+    </section>
+  );
 };
 
 export default PhotoPage;
