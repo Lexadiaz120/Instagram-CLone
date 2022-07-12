@@ -18,7 +18,7 @@
   text-overflow: ellipsis;
 }
 .login-form img {
-  max-width: 50%;
+  max-width: 50%;  
 }
 .not-registered {
   margin-top: 15px;
@@ -52,7 +52,24 @@
 
 @media (max-width: 850px) {
   .login-form {
-    width: 200px;
+    width: 50%;
     text-align: center;
   }
+
+  .not-registered {
+    width: 50%;
+  }
+}
+
+@media (max-width: 500px) {
+  .login-form {
+    width: 90%;
+    text-align: center;
+  }
+
+  .not-registered {
+    width: 90%;
+  }
+
+
 }

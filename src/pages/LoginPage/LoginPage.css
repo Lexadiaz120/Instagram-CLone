@@ -1,15 +1,17 @@
 .login-page-container {
   display: flex;
-  justify-content: center;
-  gap: 70px;
+  justify-content: center;  
   align-items: center;
+}
+
+.login-page-container img{
+  margin-right: 30px;
 }
 
 @media (max-width: 850px) {
   .login-page-image img {
-    display: none;
-  }
-  .login-page-container {
-    gap: 0px;
+    display: none;  
   }
 }
+  
+  
