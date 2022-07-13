@@ -20,13 +20,16 @@ export const UserSettings = () => {
       formData.append("username", username);
       formData.append("email", email);
       formData.append("passwd", password);
-      const changeUserRes = await fetch("http://localhost:5000/editprofile", {
-        method: "PATCH",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData,
-      });
+      const changeUserRes = await fetch(
+        `${process.env.REACT_APP_API_URL}/editprofile`,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        }
+      );
       const postUserBody = await changeUserRes.json();
       console.log(postUserBody);
       if (!postUserBody.ok) {

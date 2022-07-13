@@ -9,7 +9,7 @@ export const UserProfileGallery = ({ userphotos }) => {
           userphotos?.map((photo) => {
             return (
               <>
-                <img src={`http://localhost:5000/${photo}`}></img>
+                <img src={`${process.env.REACT_APP_API_URL}/${photo}`}></img>
               </>
             );
           })

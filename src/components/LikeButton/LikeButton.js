@@ -8,7 +8,6 @@ export const LikeButton = ({ id }) => {
   const [checked, setChecked] = useState();
   const { token } = useUserTokenContext();
   let navigate = useNavigate();
-  console.log(token, "TOKEN");
   const CreateLike = async (e) => {
     try {
       e.preventDefault();
