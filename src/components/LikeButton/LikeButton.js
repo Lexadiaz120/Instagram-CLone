@@ -27,7 +27,6 @@ export const LikeButton = ({ id }) => {
       if (postCommentRes.ok) {
         setLike(postCommentBody?.result);
       }
-      console.log(postCommentBody, "CUERPO DEL COMMENT");
       if (!postCommentRes.ok) {
         const likeBody = await postCommentRes();
         throw new Error(likeBody.message);

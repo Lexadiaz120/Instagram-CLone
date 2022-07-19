@@ -7,22 +7,23 @@ import { useParams } from "react-router-dom";
 
 export const DetailsModal = ({ photo, id, setModal, modal }) => {
   const [comments, setComments] = useState([]);
-  useEffect(() => {
-    const fetchComments = async () => {
-      try {
-        const res = await fetch(
-          `${process.env.REACT_APP_API_URL}/photoComments/${id}}`
-        );
-        const body = await res.json();
-        if (res.ok) {
-          setComments(body?.data);
-        } else {
-          throw new Error(body.message);
-        }
-      } catch (error) {
-        alert(error.message);
+  const fetchComments = async () => {
+    try {
+      const res = await fetch(
+        `${process.env.REACT_APP_API_URL}/photoComments/${id}}`
+      );
+      const body = await res.json();
+      if (res.ok) {
+        setComments(body?.data);
+      } else {
+        throw new Error(body.message);
       }
-    };
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  useEffect(() => {
     fetchComments();
   }, [comments]);
   return (

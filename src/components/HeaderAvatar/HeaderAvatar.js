@@ -6,6 +6,7 @@ export const HeaderAvatar = () => {
   if (loading) {
     return <p>Cargando</p>;
   }
+
   return (
     <>
       <Link to={"/profile"}>

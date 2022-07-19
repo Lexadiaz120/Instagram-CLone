@@ -1,3 +1,4 @@
+import Avatar from "../Avatar/Avatar";
 import "./UsersComments.css";
 export const UsersComments = ({ comments }) => {
   return (
@@ -8,9 +9,7 @@ export const UsersComments = ({ comments }) => {
             <>
               <div className="users_comments">
                 <div className="users_comments_avatar">
-                  <img
-                    src={`${process.env.REACT_APP_API_URL}/${comment?.avatar}`}
-                  ></img>
+                  <Avatar avatar={comment?.avatar} />
                 </div>
                 <div className="users_comments_name">
                   <p>{comment?.username}</p>

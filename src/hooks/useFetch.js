@@ -13,12 +13,11 @@ const useFetch = (url) => {
           ? {
               headers: { Authorization: `Bearer ${token}` },
             }
-          : {
-            };
+          : {};
 
         const res = await fetch(url, options);
 
-        const body = await res.json();        
+        const body = await res.json();
 
         if (res.ok) {
           setData(body.data);
@@ -33,7 +32,7 @@ const useFetch = (url) => {
     };
 
     fetchData();
-  }, [url, token]);
+  }, [url, token, data]);
 
   return { data, loading, error };
 };
