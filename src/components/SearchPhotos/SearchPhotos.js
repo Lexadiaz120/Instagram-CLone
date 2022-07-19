@@ -62,7 +62,11 @@ const SearchPhotos = () => {
         </div>
         {modal ? (
           <>
-            <div onMouseEnter={() => setModal(true)} className="search-results">
+            <div
+              onMouseLeave={() => setModal(false)}
+              onMouseEnter={() => setModal(true)}
+              className="search-results"
+            >
               {filteredPhotos.length > 0 && (
                 <>
                   {filteredPhotos?.map((photo, key) => (

@@ -21,6 +21,7 @@ export const CommentForm = ({ id }) => {
           body: JSON.stringify({ comments }),
         }
       );
+      toast("Comment succsefully created");
       if (!postCommentRes.ok) {
         const commentBody = await postCommentRes.json();
         navigate("/login");

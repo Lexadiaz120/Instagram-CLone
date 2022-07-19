@@ -6,7 +6,6 @@ import "./UserSettings.css";
 export const UserSettings = () => {
   const [username, setUserName] = useState("");
   const { user } = useUser();
-  console.log(user, "user");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const filesRef = useRef();
@@ -15,9 +14,7 @@ export const UserSettings = () => {
     try {
       e.preventDefault();
       const formData = new FormData();
-      console.log(formData);
       for (const image of filesRef.current.files) {
-        console.log(image);
         formData.append("avatar", image);
       }
 
@@ -41,7 +38,6 @@ export const UserSettings = () => {
         }
       );
       const postUserBody = await changeUserRes.json();
-      console.log(postUserBody);
       if (!postUserBody.ok) {
         throw new Error(postUserBody.message);
       }

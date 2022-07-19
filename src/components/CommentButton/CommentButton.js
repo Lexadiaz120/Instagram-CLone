@@ -25,6 +25,9 @@ export const CommentButton = ({ setCommentInput, commentInput, id }) => {
           body: JSON.stringify({ comments }),
         }
       );
+      if (postCommentRes.ok) {
+        toast("Comment succesfully created");
+      }
       if (!postCommentRes.ok) {
         const commentBody = await postCommentRes.json();
         throw new Error(commentBody.message);
