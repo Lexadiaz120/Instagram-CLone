@@ -37,6 +37,30 @@
   padding-left: 10px;
 }
 
+.avatarHeader button{
+  padding: 10px 20px;
+  background-color: rgba(0, 149, 246, 0.3);
+  color: black;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  transition: 0.7s;
+  border: 1px solid black;
+  border-radius: 20px 10px;
+}
+
+.avatarHeader button:nth-child(odd){
+  margin-right: 20px;    
+}
+
+.avatarHeader button:hover{
+  background-color:rgb(154, 9, 154);
+  color: whitesmoke;
+  letter-spacing: 3px;
+  border-radius: 10px 20px;
+}
+
 .header_nav{
   display: flex;
   flex-direction: row;
@@ -46,6 +70,12 @@
 
 .header_nav a{
   padding-left: 10px;
+  transition: 0.5s;
+}
+
+.header_nav a:hover{
+  letter-spacing: 2px;
+  color:rgb(154, 9, 154);
 }
 
 .modal-post {
@@ -89,6 +119,21 @@
     justify-content: center;
     align-items: center;
   }
+
+  .avatarHeader button{
+    padding: 5px 10px;    
+    font-weight: 400;
+    font-size: 0.7rem;
+    letter-spacing: 0.7px;    
+  }
+
+  .avatarHeader button:nth-child(odd){
+    margin-right: 10px;    
+  }
+
+  .avatarHeader button:hover{    
+    letter-spacing: 2px;    
+  }
 }
 
 @media (max-width: 500px){
@@ -125,6 +170,10 @@
     padding-top: 15px;
   }
 
+  .avatarHeader button:nth-child(odd){
+    margin-bottom: 10px;    
+  }
+
   .modal-post {
     width: 98%;
     display: flex;
@@ -132,6 +181,8 @@
     align-items: center;
     margin: 5px;
   }
-  
-  
+
+  .avatarHeader button:hover{    
+    letter-spacing: 1px;    
   }
+}  

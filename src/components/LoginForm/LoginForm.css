@@ -30,6 +30,16 @@
   display: block;
   margin: 20px auto;
 }
+
+.not-registered a{
+  transition: 0.5s;
+}
+
+.not-registered a:hover{
+  letter-spacing: 2px;
+  color:rgb(154, 9, 154);
+}
+
 .signup_link {
   text-decoration: none;
 }
@@ -40,6 +50,17 @@
   width: 200px;
   height: 30px;
   margin-top: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-radius: 3px;
+  transition: 0.7s;
+  cursor: pointer;  
+}
+
+.blue_button:hover{
+  letter-spacing: 3px;
+  background-color:rgb(154, 9, 154);
+  color: whitesmoke;
 }
 
 .not-registered-links {

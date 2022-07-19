@@ -88,12 +88,22 @@ ul li {
   width: 100%;
   padding-top: 20px;
   padding-bottom: 20px;
+  margin-left: 10px;
+}
+
+.post-content span{
+  margin-left: 10px;
+}
+
+.post-content div{
+  margin-left: 10px;
 }
 
 .likes {
   font-weight: bold;
   text-align: left;
-  padding-top: 10px;
+  padding-top: 10px; 
+  margin-left: 10px; 
 }
 
 .description {
@@ -158,5 +168,9 @@ ul li {
 
   .description {
     width: inherit;
+  }
+
+  .post-content{
+    margin-left: 0;
   }
 }
