@@ -1,7 +1,6 @@
 import Avatar from "../Avatar/Avatar";
 import useUser from "../../hooks/useUser";
 import "./Photo.css";
-import Button from "../Button/Button";
 import { useState } from "react";
 import { DetailsModal } from "../DetailsModal/DetailsModal";
 import { CommentButton } from "../CommentButton/CommentButton";
