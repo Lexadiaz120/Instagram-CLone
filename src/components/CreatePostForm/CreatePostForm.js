@@ -6,9 +6,11 @@ import {
 import "./CreatePostForm.css";
 import Button from "../Button/Button";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 export const CreatePostForm = ({ openForm, setOpenForm }) => {
   const filesRef = useRef();
   const { token } = useUserTokenContext();
+  const navigate = useNavigate();
   const [description_photo, setDescription] = useState("");
   const createPost = async (e) => {
     try {
@@ -18,18 +20,25 @@ export const CreatePostForm = ({ openForm, setOpenForm }) => {
         formData.append("foto", image);
       }
       formData.append("description_photo", description_photo);
-      const postEntryRes = await fetch(`${process.env.REACT_APP_API_URL}/posts`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData,
-      });
-
+      const postEntryRes = await fetch(
+        `${process.env.REACT_APP_API_URL}/posts`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        }
+      );
+      if (postEntryRes.ok) {
+        navigate("/photos");
+        setOpenForm(false);
+      }
       if (!postEntryRes.ok) {
         const postBody = await postEntryRes.json();
         throw new Error(postBody.message);
       }
+      toast("Post created succsefully");
     } catch (error) {
       toast(error.message);
     }

@@ -10,7 +10,9 @@ export const DetailsModal = ({ photo, id, setModal, modal }) => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/photoComments/${id}`);
+        const res = await fetch(
+          `${process.env.REACT_APP_API_URL}/photoComments/${id}}`
+        );
         const body = await res.json();
         if (res.ok) {
           setComments(body?.data);

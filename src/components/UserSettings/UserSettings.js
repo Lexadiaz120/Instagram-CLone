@@ -1,9 +1,12 @@
 import { useRef, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
+import useUser from "../../hooks/useUser";
 import "./UserSettings.css";
 export const UserSettings = () => {
   const [username, setUserName] = useState("");
+  const { user } = useUser();
+  console.log(user, "user");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const filesRef = useRef();
@@ -17,16 +20,26 @@ export const UserSettings = () => {
         console.log(image);
         formData.append("avatar", image);
       }
-      formData.append("username", username);
-      formData.append("email", email);
-      formData.append("passwd", password);
-      const changeUserRes = await fetch("http://localhost:5000/editprofile", {
-        method: "PATCH",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData,
-      });
+
+      if (email !== "") {
+        formData.append("email", email);
+      }
+      if (username !== "") {
+        formData.append("username", username);
+      }
+      if (password !== "") {
+        formData.append("passwd", password);
+      }
+      const changeUserRes = await fetch(
+        `${process.env.REACT_APP_API_URL}/editprofile`,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        }
+      );
       const postUserBody = await changeUserRes.json();
       console.log(postUserBody);
       if (!postUserBody.ok) {

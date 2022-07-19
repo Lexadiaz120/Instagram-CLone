@@ -12,7 +12,7 @@ const SearchPhotos = () => {
   useEffect(() => {
     const fetchPhotos = async () => {
       const res = await fetch(
-        `http://localhost:5000/photos?${searchParams.toString()}`
+        `${process.env.REACT_APP_API_URL}/photos?${searchParams.toString()}`
       );
       const body = await res.json();
 
@@ -71,7 +71,7 @@ const SearchPhotos = () => {
                         <Link to={`/photo/${photo?.id}`}>
                           <img
                             key={photo?.id}
-                            src={`http://localhost:5000/${photo?.name_photo}`}
+                            src={`${process.env.REACT_APP_API_URL}/${photo?.name_photo}`}
                             className="search-results-item"
                           ></img>
                         </Link>

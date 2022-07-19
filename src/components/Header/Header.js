@@ -56,14 +56,22 @@ const Header = () => {
               <HeaderAvatar />
               <p>Hello, {user?.[0]?.username}</p>
             </>
-          ) : null}
+          ) : (
+            <Link to={"/register"}>
+              <button>Register</button>
+            </Link>
+          )}
           {token ? (
             <>
               <nav onClick={() => navigate("/login")}>
                 <p onClick={() => setToken("")}>Sign out</p>
               </nav>
             </>
-          ) : null}
+          ) : (
+            <Link to={"/login"}>
+              <button>Login</button>
+            </Link>
+          )}
         </div>
       </header>
       <div className="modal-post">
