@@ -22,7 +22,6 @@ export const DetailsModal = ({ photo, id, setModal, modal }) => {
       alert(error.message);
     }
   };
-
   useEffect(() => {
     fetchComments();
   }, [comments]);
