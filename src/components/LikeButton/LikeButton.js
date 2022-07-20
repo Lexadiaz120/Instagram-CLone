@@ -45,7 +45,7 @@ export const LikeButton = ({ id }) => {
 
   return (
     <>
-      <Button onClick={CreateLike}> {didUserLikeEntry ? "❤️" : "🤍"} </Button>
+      <button onClick={CreateLike}> {didUserLikeEntry ? "❤️" : "🤍"} </button>
       <ToastContainer />
     </>
   );

@@ -1,29 +1,12 @@
 import { useState, useEffect } from "react";
+import { getFeed, getFeedEndPoint } from "../../api/index.js";
 import PhotosList from "../../components/PhotosList/PhotosList.js";
-
+import useFetch from "../../hooks/useFetch.js";
 const PhotosPage = () => {
-  const [photos, setPhotos] = useState([]);
-  useEffect(() => {
-    const fetchPhotos = async () => {
-      try {
-        const res = await fetch(`${process.env.REACT_APP_API_URL}/feed`);
-
-        const body = await res.json();
-
-        if (res.ok) {
-          setPhotos(body.data);
-        } else {
-          throw new Error(body.message);
-        }
-      } catch (error) {
-        alert(error.message);
-      }
-    };
-    fetchPhotos();
-  }, []);
-
+  const getFeedEndPoint = getFeed();
+  const { data: photos, loading, error } = useFetch(getFeedEndPoint);
   return (
-    <section>{photos.length > 0 && <PhotosList photos={photos} />}</section>
+    <section>{photos?.length > 0 && <PhotosList photos={photos} />}</section>
   );
 };
 
