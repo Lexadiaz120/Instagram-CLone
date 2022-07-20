@@ -11,7 +11,7 @@ import "./ProfilePage.css";
 export const ProfilePage = () => {
   const { token } = useUserTokenContext();
   const { user, loading, error } = useUser();
-  let getUserPhotos = user?.map((item) => item.name_photo);
+  let getUserPhotos = user?.map((item) => item);
   if (error) {
     toast(`${error}`);
   }
@@ -25,14 +25,16 @@ export const ProfilePage = () => {
             <div className="profile-container">
               <section className="user_info">
                 <div className="avatarHeader">
-                  <Avatar avatar={user[0]?.avatar} username={user[0]?.username} />
+                  <Avatar
+                    avatar={user[0]?.avatar}
+                    username={user[0]?.username}
+                  />
                   <p>{user[0].username}</p>
                   <Link to={"/profile/settings"}>
                     <button>Edit profile</button>
                   </Link>
                   <br />
                 </div>
-                
               </section>
             </div>
             <section className="gallery-list">
