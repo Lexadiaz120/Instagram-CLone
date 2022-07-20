@@ -32,7 +32,7 @@ const useFetch = (url) => {
     };
 
     fetchData();
-  }, [url, token, data]);
+  }, [url, data, token]);
 
   return { data, loading, error };
 };
