@@ -30,7 +30,6 @@ const useFetch = (url) => {
         setLoading(false);
       }
     };
-
     fetchData();
   }, [url, data, token]);
 

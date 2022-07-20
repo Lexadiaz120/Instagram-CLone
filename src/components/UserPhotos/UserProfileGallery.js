@@ -11,10 +11,8 @@ export const UserProfileGallery = ({ userphotos }) => {
             return (
               <>
                 <Link to={`/photo/${photo.id}`}>
-                  <img
-                    src={`${process.env.REACT_APP_API_URL}/${photo.name_photo}`}
-                  ></img>
-                </Link>
+                  <img src={`${process.env.REACT_APP_API_URL}/${photo.name_photo}`}></img>
+                </Link>                
               </>
             );
           })
