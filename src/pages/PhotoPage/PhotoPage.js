@@ -9,9 +9,7 @@ const PhotoPage = () => {
     const fetchPhoto = async () => {
       try {
         const res = await fetch(`${process.env.REACT_APP_API_URL}/photo/${id}`);
-
         const body = await res.json();
-
         if (res.ok) {
           setPhoto(body.data);
         } else {

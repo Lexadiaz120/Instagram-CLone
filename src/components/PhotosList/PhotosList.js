@@ -1,5 +1,6 @@
 import List from "../List/List.js";
 import Photo from "../Photo/Photo";
+import { Link } from "react-router-dom";
 
 const PhotosList = ({ photos }) => {
   return (
