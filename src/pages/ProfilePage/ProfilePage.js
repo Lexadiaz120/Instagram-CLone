@@ -11,7 +11,7 @@ import "./ProfilePage.css";
 export const ProfilePage = () => {
   const { token } = useUserTokenContext();
   const { user, loading, error } = useUser();
-  let getUserPhotos = user?.map((item) => item.name_photo);
+  let getUserPhotos = user?.map((item) => item);
   if (error) {
     toast(`${error}`);
   }
