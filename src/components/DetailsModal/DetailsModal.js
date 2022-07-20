@@ -38,7 +38,6 @@ export const DetailsModal = ({ photo, id, setModal, modal }) => {
             <UsersComments comments={comments} />
           </div>
           <div className="modalCommentForm">
-            <LikeButton id={id} />
             <CommentForm id={id} />
           </div>
         </div>

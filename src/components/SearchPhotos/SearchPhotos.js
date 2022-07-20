@@ -45,6 +45,9 @@ const SearchPhotos = () => {
           >
             <input
               value={description_photo}
+              onMouseLeave={() => {
+                setModal(!modal);
+              }}
               onClick={() => {
                 setModal(!modal);
               }}
