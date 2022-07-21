@@ -7,7 +7,7 @@ import "./CreatePostForm.css";
 import Button from "../Button/Button";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-export const CreatePostForm = ({ openForm, setOpenForm }) => {
+export const CreatePostForm = ({ openForm, setOpenForm, addPhoto }) => {
   const filesRef = useRef();
   const { token } = useUserTokenContext();
   const navigate = useNavigate();
@@ -31,15 +31,20 @@ export const CreatePostForm = ({ openForm, setOpenForm }) => {
         }
       );
       if (postEntryRes.ok) {
-        navigate("/photos");
+        if (window.location.pathname === "/photos") {
+          const body = await postEntryRes.json();
+          console.log(body.data);
+          addPhoto(body.data);
+        }
+        toast("Post created succsefully");
         setOpenForm(false);
       }
       if (!postEntryRes.ok) {
         const postBody = await postEntryRes.json();
         throw new Error(postBody.message);
       }
-      toast("Post created succsefully");
     } catch (error) {
+      console.log(error);
       toast(error.message);
     }
   };

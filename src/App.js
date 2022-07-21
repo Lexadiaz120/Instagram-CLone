@@ -8,23 +8,33 @@ import PhotoPage from "./pages/PhotoPage/PhotoPage";
 import PhotosPage from "./pages/PhotosPage/PhotosPage";
 import UserGallery from "./components/UserGallery/UserGallery";
 import Header from "./components/Header/Header";
+import { toast, ToastContainer } from "react-toastify";
+import useFetch from "./hooks/useFetch";
+import usePhotos from "./hooks/usePhotos";
+import useUser from "./hooks/useUser";
 
 function App() {
+  const { photos, addPhoto } = usePhotos();
+  const { user, addAvatar, loading } = useUser();
   return (
     <div className="App">
       <BrowserRouter>
-        <Header />
+        <Header loading={loading} user={user} addPhoto={addPhoto} />
         <Routes>
-          <Route path={"/"} element={<PhotosPage />}></Route>
+          <Route path={"/"} element={<PhotosPage photos={photos} />}></Route>
           <Route path={"/login"} element={<LoginPage />}></Route>
           <Route path={"/register"} element={<RegisterForm />}></Route>
           <Route path={"/profile"} element={<ProfilePage />}></Route>
-          <Route path={"/photos"} element={<PhotosPage />} />
+          <Route path={"/photos"} element={<PhotosPage photos={photos} />} />
           <Route path={"/photo/:id"} element={<PhotoPage />} />
           <Route path={"/gallery/:id"} element={<UserGallery />} />
-          <Route path={"/profile/settings"} element={<UserSettings />}></Route>
+          <Route
+            path={"/profile/settings"}
+            element={<UserSettings addAvatar={addAvatar} />}
+          ></Route>
         </Routes>
       </BrowserRouter>
+      <ToastContainer />
     </div>
   );
 }

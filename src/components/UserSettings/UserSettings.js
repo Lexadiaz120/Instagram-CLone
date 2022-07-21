@@ -1,9 +1,9 @@
 import { useRef, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import useUser from "../../hooks/useUser";
 import "./UserSettings.css";
-export const UserSettings = () => {
+export const UserSettings = ({ addAvatar }) => {
   const [username, setUserName] = useState("");
   const { user } = useUser();
   const [email, setEmail] = useState("");
@@ -37,12 +37,14 @@ export const UserSettings = () => {
           body: formData,
         }
       );
-      const postUserBody = await changeUserRes.json();
+      let postUserBody = await changeUserRes.json();
+      addAvatar(postUserBody);
+      if (postUserBody.ok) {
+        let postUserBody = await changeUserRes.json();
+        toast("Data succesfully changed");
+      }
       if (!postUserBody.ok) {
         throw new Error(postUserBody.message);
-      }
-      if (postUserBody.ok) {
-        toast("Data succesfully changed");
       }
     } catch (error) {
       toast(error.message);
@@ -84,7 +86,6 @@ export const UserSettings = () => {
           <button>Change data</button>
         </form>
       </div>
-      <ToastContainer />
     </>
   );
 };

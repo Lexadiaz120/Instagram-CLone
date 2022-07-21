@@ -6,13 +6,12 @@ import { CreatePostForm } from "../CreatePostForm/CreatePostForm";
 import { HeaderAvatar } from "../HeaderAvatar/HeaderAvatar";
 import SearchPhotos from "../SearchPhotos/SearchPhotos";
 import "./Header.css";
-const Header = () => {
+const Header = ({ addPhoto, photos, user, loading }) => {
   const [addPost, setAddPost] = useState(false);
-  const { user, loading } = useUser();
   const [openForm, setOpenForm] = useState(false);
   const { token, setToken } = useUserTokenContext();
   const navigate = useNavigate();
-  const openPost = () => {
+  const openPost = ({ setPhotos }) => {
     setAddPost(true);
   };
   const closePost = () => {
@@ -53,7 +52,7 @@ const Header = () => {
         <div className="avatarHeader">
           {token ? (
             <>
-              <HeaderAvatar />
+              <HeaderAvatar loading={loading} user={user} />
               <p>Hello, {user?.[0]?.username}</p>
             </>
           ) : (
@@ -75,7 +74,11 @@ const Header = () => {
         </div>
       </header>
       <div className="modal-post">
-        <CreatePostForm openForm={openForm} setOpenForm={setOpenForm} />
+        <CreatePostForm
+          openForm={openForm}
+          addPhoto={addPhoto}
+          setOpenForm={setOpenForm}
+        />
       </div>
     </>
   );

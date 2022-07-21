@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
 import useUser from "../../hooks/useUser";
 import Avatar from "../Avatar/Avatar";
-export const HeaderAvatar = () => {
-  const { user, loading } = useUser();
+export const HeaderAvatar = ({ user, loading }) => {
   if (loading) {
-    return <p>Cargando</p>;
+    <p>Cargando</p>;
   }
-
   return (
     <>
       <Link to={"/profile"}>
