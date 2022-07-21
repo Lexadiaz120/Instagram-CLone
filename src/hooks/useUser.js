@@ -2,8 +2,17 @@ import { useEffect } from "react";
 import { getProfileEndpoint } from "../api";
 import useFetch from "./useFetch";
 const useUser = () => {
-  const { data: user, loading, error } = useFetch(getProfileEndpoint());
+  const {
+    data: user,
+    setData: setAvatar,
+    loading,
+    error,
+  } = useFetch(getProfileEndpoint());
 
-  return { user, loading, error };
+  const addAvatar = (newAvatar) => {
+    setAvatar([newAvatar, ...user]);
+  };
+
+  return { user, loading, error, setAvatar, addAvatar };
 };
 export default useUser;

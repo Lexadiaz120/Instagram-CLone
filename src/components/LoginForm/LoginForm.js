@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import "react-toastify/dist/ReactToastify.css";
 import "./LoginForm.css";
@@ -73,7 +73,6 @@ const LoginForm = () => {
             Not register? Register <Link to={"/register"}>here</Link>
           </p>
         </div>
-        <ToastContainer />
       </div>
     </>
   );

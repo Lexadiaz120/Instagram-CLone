@@ -32,9 +32,9 @@ const useFetch = (url) => {
     };
 
     fetchData();
-  }, [url, data, token]);
+  }, [url, token]);
 
-  return { data, loading, error };
+  return { data, loading, error, setData };
 };
 
 export default useFetch;

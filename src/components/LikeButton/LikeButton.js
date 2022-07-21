@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import useCheckLike from "../../hooks/useCheckLike";
@@ -46,7 +46,6 @@ export const LikeButton = ({ id }) => {
   return (
     <>
       <button onClick={CreateLike}> {didUserLikeEntry ? "❤️" : "🤍"} </button>
-      <ToastContainer />
     </>
   );
 };
