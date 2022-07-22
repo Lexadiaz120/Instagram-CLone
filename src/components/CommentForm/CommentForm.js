@@ -3,10 +3,16 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useUserTokenContext } from "../../contexts/UserTokenContext";
 import "./CommentForm.css";
-export const CommentForm = ({ id }) => {
+export const CommentForm = ({
+  id,
+  comments,
+  comment,
+  setComment,
+  setComments,
+}) => {
+  console.log(comment);
   const { token } = useUserTokenContext();
   const navigate = useNavigate();
-  const [comments, setComments] = useState("");
   const createComment = async (e) => {
     try {
       e.preventDefault();
@@ -18,17 +24,18 @@ export const CommentForm = ({ id }) => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({ comments }),
+          body: JSON.stringify({ comment }),
         }
       );
-      toast("Comment succsefully created");
+      if (postCommentRes.ok) {
+        toast("Comment succsefully created");
+        const commentBody = await postCommentRes.json();
+        setComments([...comments, commentBody?.data]);
+      }
       if (!postCommentRes.ok) {
         const commentBody = await postCommentRes.json();
-        navigate("/login");
         throw new Error(commentBody.message);
       }
-
-      setComments("");
     } catch (error) {
       toast("You need to be authorized to make comments");
     }
@@ -38,10 +45,11 @@ export const CommentForm = ({ id }) => {
       <div className="comment_form">
         <form onSubmit={createComment}>
           <input
+            required
+            minLength={3}
             id="comment"
-            value={comments}
             onChange={(e) => {
-              setComments(e.target.value);
+              setComment(e.target.value);
             }}
           />
           <button>Send</button>

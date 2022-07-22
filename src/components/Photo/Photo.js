@@ -8,16 +8,17 @@ import { LikeButton } from "../LikeButton/LikeButton";
 import { Link } from "react-router-dom";
 import { LikesCount } from "../LikesCount/LikesCount";
 const Photo = ({ photo }) => {
-  const { user, loading, error } = useUser();
   const [modal, setModal] = useState(false);
   const [commentInput, setCommentInput] = useState(false);
-  const { name_photo, id, username, description_photo } = photo;
+  const { name_photo, id, username, description_photo, user_id, avatar } =
+    photo;
+
   return (
     <article>
       <header className="header-photo">
         <div className="perfilImage">
-          <Link to={`/gallery/${id}`}>
-            <Avatar avatar={user?.avatar} username={user?.username} />
+          <Link to={`/gallery/${user_id}`}>
+            <Avatar avatar={avatar} username={username} />
           </Link>
         </div>
         <div className="photoDatas">
@@ -44,11 +45,6 @@ const Photo = ({ photo }) => {
       <div className="post-content">
         <div className="iconsPhoto">
           <LikeButton id={id}></LikeButton>
-          <CommentButton
-            commentInput={commentInput}
-            setCommentInput={setCommentInput}
-            id={id}
-          ></CommentButton>
         </div>
         <p className="likes">
           <LikesCount id={id}></LikesCount>

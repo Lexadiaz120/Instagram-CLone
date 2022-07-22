@@ -7,6 +7,7 @@ import "./UserGallery.css";
 const UserGallery = () => {
   const { id } = useParams();
   const [photos, setPhoto] = useState([]);
+  console.log(photos);
   const [modal, setModal] = useState(false);
   useEffect(() => {
     const fetchPhoto = async () => {
@@ -30,7 +31,7 @@ const UserGallery = () => {
     <>
       <div className="user-gallery-container">
         <Avatar
-          avatar={photos[0]?.name_photo}
+          avatar={photos[0]?.avatar}
           username={photos[0]?.username}
         ></Avatar>
         <p>{photos[0]?.username}</p>
