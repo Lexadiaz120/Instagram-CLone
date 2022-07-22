@@ -15,13 +15,13 @@ import useUser from "./hooks/useUser";
 
 function App() {
   const { photos, addPhoto } = usePhotos();
-  const { user, addAvatar, loading } = useUser();
+  const { user, loading, addAvatar } = useUser();
+  console.log(user, "usuario");
   return (
     <div className="App">
       <BrowserRouter>
         <Header loading={loading} user={user} addPhoto={addPhoto} />
         <Routes>
-          <Route path={"/"} element={<PhotosPage photos={photos} />}></Route>
           <Route path={"/login"} element={<LoginPage />}></Route>
           <Route path={"/register"} element={<RegisterForm />}></Route>
           <Route path={"/profile"} element={<ProfilePage />}></Route>

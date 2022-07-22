@@ -31,10 +31,10 @@ export const CreatePostForm = ({ openForm, setOpenForm, addPhoto }) => {
         }
       );
       if (postEntryRes.ok) {
+        const body = await postEntryRes.json();
+        addPhoto(body.data);
         if (window.location.pathname === "/photos") {
-          const body = await postEntryRes.json();
-          console.log(body.data);
-          addPhoto(body.data);
+          navigate("/photos");
         }
         toast("Post created succsefully");
         setOpenForm(false);

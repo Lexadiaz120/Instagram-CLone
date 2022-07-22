@@ -4,7 +4,8 @@ import Photo from "../../components/Photo/Photo.js";
 
 const PhotoPage = () => {
   const { id } = useParams();
-  const [photo, setPhoto] = useState({});
+  const [photo, setPhoto] = useState([]);
+  console.log(photo, "una photo");
   useEffect(() => {
     const fetchPhoto = async () => {
       try {

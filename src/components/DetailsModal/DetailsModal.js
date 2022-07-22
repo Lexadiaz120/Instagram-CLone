@@ -7,6 +7,9 @@ import { useParams } from "react-router-dom";
 
 export const DetailsModal = ({ photo, id, setModal, modal }) => {
   const [comments, setComments] = useState([]);
+  console.log(comments);
+  const [comment, setComment] = useState([]);
+  console.log(comments);
   const fetchComments = async () => {
     try {
       const res = await fetch(
@@ -24,7 +27,7 @@ export const DetailsModal = ({ photo, id, setModal, modal }) => {
   };
   useEffect(() => {
     fetchComments();
-  }, [comments]);
+  }, []);
   return (
     <>
       <div className="details_modal">
@@ -38,7 +41,13 @@ export const DetailsModal = ({ photo, id, setModal, modal }) => {
             <UsersComments comments={comments} />
           </div>
           <div className="modalCommentForm">
-            <CommentForm id={id} />
+            <CommentForm
+              setComment={setComment}
+              comment={comment}
+              comments={comments}
+              setComments={setComments}
+              id={id}
+            />
           </div>
         </div>
         <span onClick={() => setModal(!modal)}>&times;</span>

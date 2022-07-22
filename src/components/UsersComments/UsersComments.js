@@ -1,6 +1,7 @@
 import Avatar from "../Avatar/Avatar";
 import "./UsersComments.css";
 export const UsersComments = ({ comments }) => {
+  console.log(comments);
   return (
     <>
       {comments ? (
@@ -15,7 +16,7 @@ export const UsersComments = ({ comments }) => {
                   <p>{comment?.username}</p>
                 </div>
                 <div className="users_comments_text">
-                  <p>{comment?.comments}</p>
+                  <p>{comment?.comment}</p>
                 </div>
               </div>
             </>
