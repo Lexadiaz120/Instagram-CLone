@@ -22,6 +22,7 @@ function App() {
       <BrowserRouter>
         <Header loading={loading} user={user} addPhoto={addPhoto} />
         <Routes>
+          <Route path={"/"} element={<PhotosPage photos={photos} />}></Route>
           <Route path={"/login"} element={<LoginPage />}></Route>
           <Route path={"/register"} element={<RegisterForm />}></Route>
           <Route path={"/profile"} element={<ProfilePage />}></Route>
